@@ -1,6 +1,6 @@
-const { db } = require('./db');
-const app = require('./app');
-const PORT = process.env.PORT || 3000;
+const { db } = require('./server/db');
+const app = require('./server/app');
+const PORT = process.env.PORT || 8080;
 
 db
 	.sync() // if you update your db schemas, make sure you drop the tables first and then recreate them
