@@ -1,10 +1,12 @@
+const { green, red } = require('chalk');
 const { db, Recipe } = require('./server/db');
+const stockRecipes = require('./seed-data.js');
 
 const seed = async () => {
 	try {
 		await db.sync({ force: true });
 
-		await Recipe.create({ name: 'Chicken' });
+		await Promise.all([ ...stockRecipes.map((recipe) => Recipe.create(recipe)) ]);
 	} catch (err) {
 		console.log(red(err));
 	}
@@ -12,11 +14,11 @@ const seed = async () => {
 
 seed()
 	.then(() => {
-		console.log('Seeding success!');
+		console.log(green('Seeding success!'));
 		db.close();
 	})
 	.catch((err) => {
-		console.error('Something went wrong!');
-		console.error(err);
+		console.error(red('Something went wrong!'));
+		console.error(red(err));
 		db.close();
 	});
