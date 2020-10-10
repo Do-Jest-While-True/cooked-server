@@ -4,12 +4,12 @@ const app = express();
 
 // app.use(morgan('dev')); //logging middleware
 
-app.use(express.urlencoded({ extended: false })); //parsing middleware for form input data
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use('/api', require('./api'));
 
-// failed to catch req above means 404, forward to error handler
+// handle 404s -- need to inset a Not Found Page
 app.use((req, res, next) => {
 	res.status(404).send(/* Not Found Page */);
 });

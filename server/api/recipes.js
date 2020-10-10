@@ -4,8 +4,8 @@ const { Recipe } = require('../db');
 // GET /api/recipes
 router.get('/', async (req, res, next) => {
 	try {
-		const recipe = await Recipe.findByPk(1);
-		res.json(recipe);
+		const recipes = await Recipe.findAll();
+		res.json(recipes);
 	} catch (error) {
 		next(error);
 	}
