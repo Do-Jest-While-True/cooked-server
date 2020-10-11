@@ -1,4 +1,4 @@
-const { db } = require('./server/db')
+const db = require('./server/db')
 const app = require('./server/app')
 const PORT = process.env.PORT || 8080
 
