@@ -10,9 +10,9 @@ const Recipe = db.define('recipe', {
   },
   imageUrl: {
     type: Sequelize.TEXT,
-    validate: {
-      notEmpty: true,
-    },
+    // validate: {
+    //   notEmpty: true,
+    // },
   },
   time: {
     type: Sequelize.STRING,
