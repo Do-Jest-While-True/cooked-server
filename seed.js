@@ -10,9 +10,9 @@ const seed = async () => {
 
     // USERS / FOLLOWERS _____________________
     const user1 = await User.create({
-      firstName: 'Xander',
-      lastName: 'Bakx',
-      email: 'xanderbakx@gmail.com',
+      firstName: 'Admin',
+      lastName: 'Jones',
+      email: 'Admin',
       password: 123,
     })
 
