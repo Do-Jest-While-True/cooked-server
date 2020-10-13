@@ -27,4 +27,21 @@ router.get('/:userId', async (req, res, next) => {
   }
 })
 
+// POST /api/recipes
+router.post('/', async (req, res, next) => {
+  try {
+    const { name, time, ingredients, directions, imageUrl } = req.body
+    const recipe = await Recipe.create({
+      name,
+      time,
+      ingredients,
+      directions,
+      imageUrl,
+    })
+    res.json(recipe)
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router

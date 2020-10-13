@@ -3,8 +3,6 @@ module.exports = [
     // id: 1,
     name: 'Braised Short Ribs o/ white rice',
     // imageUrl: require('../assets/img/brisket-avocado.jpeg'),
-    imageUrl:
-      'https://lh3.googleusercontent.com/vKU1ddMINiAdWZYrLjeOJ3oEpo_sV3-PKL77h-mCpqq_8XDB0NOPUrdz6UQoNFRYUrjpOlDdyePw-wQaQe5D8bcSdmXuTAcXMX7GJvqpno8rak97O3PqD4nVMHYuNqlXcMWMZVUVMLc0qCptaHndqsI9PpXSrA3LqiSVzLufPc_IwZlSUq0vORsNzNX1vbq4eBOMN7XnOZK8zGY8AqHUWcnGOIlPollc0lFYbM3i3uW2eVtOM-DCimWBvDY3PFZ-aERXlB3o3HHCnaxS3zHfhOHy-yvOfjbpCckOXQgRC7s8wRehqCD9sCPf08cUAfENc4qhuWzDA4ZjKfQsdel_UAJnvOTQFMl6jKiywZpoujeyodleBVOuxq8hjVpVlXJ2XJ0mO14wiwUzvH_KyKiDbmmQoCfQi5GrryQ6QaFle1aziTslELv5T4ygiIgM10_rl5l7lNEWSPAjbw05aDx3peB3tFac9oesM_Rh1R-ioH1iRydwcdsIiiqsFFVLE57EJQXHcsF8pUBsKf7Tk44xgxi8qwFtKvWapURL_ReGlJDX-oMgaKfs0wXSRLm1dtey70zZ2AblEVKAVSiwL6lDSu9_qu9xzx_ABrffUqfGwSUWD8pYxsvGRQFoAUzRaGkNBeE775xDuE0C74Glfkf5FyM2d_SOLIPpd4sv1AxYlBx86E2pmPIxNYQvbspRUg=s1792-no?authuser=0',
     time: '3 hours',
     ingredients: [
       'Short ribs',
@@ -36,7 +34,6 @@ module.exports = [
     // id: 2,
     name: 'NY Strip w/ flakey salt',
     // imageUrl: require('../assets/img/steak.jpeg'),
-    imageUrl: '',
     time: '20 minutes',
     ingredients: [
       'NY Strip',
