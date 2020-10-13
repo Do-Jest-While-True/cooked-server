@@ -7,8 +7,6 @@ const Recipe = db.define('recipe', {
   },
   imageUrl: {
     type: Sequelize.TEXT,
-    defaultValue:
-      'https://res.cloudinary.com/cooked-images/image/upload/v1602617585/yf0ed8sepdpgeu0f18jz.jpg',
   },
   time: {
     type: Sequelize.STRING,
