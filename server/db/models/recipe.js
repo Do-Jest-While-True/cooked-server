@@ -7,9 +7,10 @@ const Recipe = db.define('recipe', {
   },
   imageUrl: {
     type: Sequelize.TEXT,
+    defaultValue:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602617585/yf0ed8sepdpgeu0f18jz.jpg',
   },
   time: {
-    // could be an integer, but this way someone can say 90 minutes OR 1.5 hours
     type: Sequelize.STRING,
   },
   ingredients: {
