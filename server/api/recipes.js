@@ -11,19 +11,18 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-// POST /api/recipes/:recipeId
-router.post('/:recipeId', async (req, res, next) => {
+// POST /api/recipes
+router.post('/', async (req, res, next) => {
   try {
-    const { imageUrl } = req.body
-    await Recipe.update(
-      { imageUrl: imageUrl },
-      {
-        where: {
-          id: req.params.recipeId,
-        },
-      }
-    )
-    res.sendStatus(204)
+    const { name, time, ingredients, directions, imageUrl } = req.body
+    const recipe = await Recipe.create({
+      name,
+      time,
+      ingredients,
+      directions,
+      imageUrl,
+    })
+    res.json(recipe)
   } catch (error) {
     next(error)
   }
