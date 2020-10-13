@@ -4,19 +4,33 @@ const db = require('../db')
 const Recipe = db.define('recipe', {
   name: {
     type: Sequelize.STRING,
+    validate: {
+      notEmpty: true,
+    },
   },
   imageUrl: {
     type: Sequelize.TEXT,
+    // validate: {
+    //   notEmpty: true,
+    // },
   },
   time: {
-    // could be an integer, but this way someone can say 90 minutes OR 1.5 hours
     type: Sequelize.STRING,
+    validate: {
+      notEmpty: true,
+    },
   },
   ingredients: {
     type: Sequelize.ARRAY(Sequelize.STRING),
+    validate: {
+      notEmpty: true,
+    },
   },
   directions: {
     type: Sequelize.ARRAY(Sequelize.TEXT),
+    validate: {
+      notEmpty: true,
+    },
   },
 })
 

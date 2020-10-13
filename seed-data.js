@@ -1,8 +1,8 @@
 module.exports = [
   {
-    // id: 1,
     name: 'Braised Short Ribs o/ white rice',
-    // imageUrl: require('../assets/img/brisket-avocado.jpeg'),
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602617182/cdfqhjfbszkvrn71bjdq.jpg',
     time: '3 hours',
     ingredients: [
       'Short ribs',
@@ -31,9 +31,9 @@ module.exports = [
     userId: 1,
   },
   {
-    // id: 2,
     name: 'NY Strip w/ flakey salt',
-    // imageUrl: require('../assets/img/steak.jpeg'),
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602617185/mc1vcriz1gkshgq6j8ut.jpg',
     time: '20 minutes',
     ingredients: [
       'NY Strip',
@@ -56,9 +56,9 @@ module.exports = [
     userId: 1,
   },
   {
-    // id: 3,
     name: 'Fried Eggs w/ avocado & sriracha',
-    // imageUrl: require('../assets/img/eggs-sriracha.jpeg'),
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602617182/hqqwizethctauwsmzdit.jpg',
     time: '10 minutes',
     ingredients: ['Eggs', 'Avocado', 'Sriracha', 'S/P'],
     directions: [
@@ -70,9 +70,9 @@ module.exports = [
     userId: 1,
   },
   {
-    // id: 4,
     name: 'Salmon w/ everything but the bagel',
-    // imageUrl: require('../assets/img/salmon-blue.jpeg'),
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602617184/fcbk82jeop4o72eyqp8g.jpg',
     time: '10 minutes',
     ingredients: [
       'Wild Salmon',
@@ -89,9 +89,9 @@ module.exports = [
     userId: 1,
   },
   {
-    // id: 5,
     name: 'Scrambled Eggs w/ bacon',
-    // imageUrl: require('../assets/img/eggs-bacon.jpeg'),
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602617182/norildjoflt79a2t7k92.jpg',
     time: '10 minutes',
     ingredients: ['Eggs', 'Thick-cut Bacon', 'Butter', 'S/P'],
     directions: [
@@ -106,9 +106,9 @@ module.exports = [
     userId: 1,
   },
   {
-    // id: 6,
     name: 'Chicken Tikki Masala o/ basmati rice',
-    // imageUrl: require('../assets/img/tikka-masala.jpeg'),
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602617185/xhpimcj1pdmgje3agele.jpg',
     time: '30 minutes',
     ingredients: [
       'Boneless Chicken Thighs',
