@@ -1,4 +1,3 @@
-const { green, red } = require('chalk')
 const db = require('./server/db')
 const { Recipe, User, Comment, Follower } = require('./server/db/models')
 const stockRecipes = require('./seed-data.js')
@@ -95,17 +94,17 @@ const seed = async () => {
     console.log('recipe', Object.keys(recipe.__proto__))
     console.log('comment', Object.keys(comment1.__proto__))
   } catch (err) {
-    console.log(red(err))
+    console.log(err)
   }
 }
 
 seed()
   .then(() => {
-    console.log(green('Seeding success!'))
+    console.log('Seeding success!')
     db.close()
   })
   .catch((err) => {
-    console.error(red('Something went wrong!'))
-    console.error(red(err))
+    console.error('Something went wrong!')
+    console.error(err)
     db.close()
   })
