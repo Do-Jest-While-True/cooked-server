@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User, Recipe } = require('../db/models')
+const { User, Recipe, Follower } = require('../db/models')
 module.exports = router
 
 // GET all users
@@ -17,11 +17,23 @@ router.get('/', async (req, res, next) => {
 // GET single user, their followers, and recipes
 router.get('/:userId', async (req, res, next) => {
   try {
-    const users = await User.findByPk(req.params.userId, {
+    const user = await User.findByPk(req.params.userId, {
       attributes: ['id', 'firstName', 'lastName', 'email', 'profileImageUrl'],
-      include: [{ model: Recipe }, { model: User, as: 'follower' }],
     })
-    res.json(users)
+    const following = await Follower.findAll({
+      where: { followedById: req.params.userId },
+      attributes: ['followingId'],
+    })
+    const followers = await Follower.findAll({
+      where: { followingId: req.params.userId },
+      attributes: ['followedById'],
+    })
+    const userData = {
+      user,
+      followers,
+      following,
+    }
+    res.json(userData)
   } catch (error) {
     next(error)
   }
