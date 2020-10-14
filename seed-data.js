@@ -7,7 +7,7 @@ module.exports = [
     ingredients: [
       'Short ribs',
       'White Rice',
-      'Chipotles in abodo',
+      'Chipotles in adobo',
       'Onion',
       'Garlic',
       'Avocado',
@@ -129,7 +129,7 @@ module.exports = [
     directions: [
       'Add your rice to a pot and 1.5x water by weight',
       'Cover and bring to a simmer and immediately reduce heat once simmering',
-      'Remove from heat once there is no water left and desired doneness is acheived',
+      'Remove from heat once there is no water left and desired doneness is achieved',
       'Cook your chicken thighs in pan and set aside to let rest',
       'Chop your onions and mince your garlic and fresh ginger',
       'Add them to a hot dutch oven over the stove',

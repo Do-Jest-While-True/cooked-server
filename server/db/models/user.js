@@ -8,6 +8,9 @@ const User = db.define('user', {
   lastName: {
     type: Sequelize.STRING,
   },
+  username: {
+    type: Sequelize.STRING,
+  },
   profileImageUrl: {
     type: Sequelize.TEXT,
     defaultValue:

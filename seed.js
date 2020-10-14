@@ -1,4 +1,3 @@
-const { green, red } = require('chalk')
 const db = require('./server/db')
 const { Recipe, User, Comment, Follower } = require('./server/db/models')
 const stockRecipes = require('./seed-data.js')
@@ -12,6 +11,7 @@ const seed = async () => {
     const user1 = await User.create({
       firstName: 'Admin',
       lastName: 'Jones',
+      username: 'adminjones99',
       email: 'Admin',
       password: 123,
     })
@@ -19,6 +19,7 @@ const seed = async () => {
     const user2 = await User.create({
       firstName: 'Bryan',
       lastName: 'Ryu',
+      username: 'bryu2000',
       email: 'bryanryu1@gmail.com',
       password: 456,
     })
@@ -29,6 +30,7 @@ const seed = async () => {
       let newUser = {
         firstName: name,
         lastName: faker.name.lastName(),
+        username: faker.internet.userName(),
         email: faker.internet.email(name),
         password: faker.internet.password(),
       }
@@ -95,17 +97,17 @@ const seed = async () => {
     console.log('recipe', Object.keys(recipe.__proto__))
     console.log('comment', Object.keys(comment1.__proto__))
   } catch (err) {
-    console.log(red(err))
+    console.log(err)
   }
 }
 
 seed()
   .then(() => {
-    console.log(green('Seeding success!'))
+    console.log('Seeding success!')
     db.close()
   })
   .catch((err) => {
-    console.error(red('Something went wrong!'))
-    console.error(red(err))
+    console.error('Something went wrong!')
+    console.error(err)
     db.close()
   })
