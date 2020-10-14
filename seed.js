@@ -45,7 +45,7 @@ const seed = async () => {
       const user2 = await User.findByPk(
         Math.floor(Math.random() * Math.floor(100)) + 1
       )
-      await user2.setFollower(user1)
+      await user2.setFollowing(user1)
     }
 
     // await user1.setFollower(user2)

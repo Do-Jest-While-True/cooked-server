@@ -2,6 +2,7 @@ const db = require('../db')
 const Recipe = require('./recipe')
 const User = require('./user')
 const Comment = require('./comment')
+const Follower = require('./follower')
 
 // Model Associations
 
@@ -19,18 +20,19 @@ Comment.belongsTo(User)
 
 // User-User (through following) M:M
 User.belongsToMany(User, {
-  as: 'user',
-  foreignKey: 'userId',
-  through: 'followers',
+  as: 'following',
+  foreignKey: 'followingId',
+  through: Follower,
 })
 User.belongsToMany(User, {
-  as: 'follower',
-  foreignKey: 'followerId',
-  through: 'followers',
+  as: 'user',
+  foreignKey: 'followedById',
+  through: Follower,
 })
 
 module.exports = {
   Recipe,
   User,
   Comment,
+  Follower,
 }

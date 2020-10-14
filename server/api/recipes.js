@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Recipe, Comment, User } = require('../db/models')
+const { Recipe, Comment, User, Follower } = require('../db/models')
 
 // GET /api/recipes (All recipes)
 router.get('/', async (req, res, next) => {
@@ -8,6 +8,18 @@ router.get('/', async (req, res, next) => {
       include: [{ model: Comment }],
     })
     res.json(recipes)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.get('/', async (req, res, next) => {
+  const user = req.user
+  try {
+    if (user) {
+      const feedRecipes = await Recipe.findAll({})
+      res.json(feedRecipes)
+    }
   } catch (error) {
     next(error)
   }
