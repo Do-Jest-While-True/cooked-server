@@ -6,7 +6,14 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      attributes: ['id', 'firstName', 'lastName', 'email', 'profileImageUrl'],
+      attributes: [
+        'id',
+        'firstName',
+        'lastName',
+        'username',
+        'email',
+        'profileImageUrl',
+      ],
     })
     res.json(users)
   } catch (error) {
@@ -18,7 +25,14 @@ router.get('/', async (req, res, next) => {
 router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
-      attributes: ['id', 'firstName', 'lastName', 'email', 'profileImageUrl'],
+      attributes: [
+        'id',
+        'firstName',
+        'lastName',
+        'username',
+        'email',
+        'profileImageUrl',
+      ],
     })
     const following = await Follower.findAll({
       where: { followedById: req.params.userId },
@@ -43,7 +57,14 @@ router.get('/:userId', async (req, res, next) => {
 router.get('/:userId/:recipeId', async (req, res, next) => {
   try {
     const users = await User.findByPk(req.params.userId, {
-      attributes: ['id', 'firstName', 'lastName', 'email', 'profileImageUrl'],
+      attributes: [
+        'id',
+        'firstName',
+        'lastName',
+        'username',
+        'email',
+        'profileImageUrl',
+      ],
       include: [{ model: Recipe, where: { id: req.params.recipeId } }],
     })
     res.json(users)

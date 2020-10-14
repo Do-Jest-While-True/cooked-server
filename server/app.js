@@ -7,7 +7,7 @@ const db = require('./db')
 const sessionStore = new SequelizeStore({ db })
 const { User } = require('./db/models')
 const app = express()
-// const morgan = require('morgan') // comment out before deployment to heroku
+const morgan = require('morgan')
 
 passport.serializeUser((user, done) => done(null, user.id))
 
@@ -21,7 +21,7 @@ passport.deserializeUser(async (id, done) => {
 })
 
 // Logging middleware
-// app.use(morgan('dev')) // comment out before deployment to heroku
+app.use(morgan('dev'))
 
 // Body parsing middleware
 app.use(express.urlencoded({ extended: false }))
