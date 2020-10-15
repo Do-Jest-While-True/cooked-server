@@ -3,6 +3,7 @@ const Recipe = require('./recipe')
 const User = require('./user')
 const Comment = require('./comment')
 const Follower = require('./follower')
+const Like = require('./like')
 
 // Model Associations
 
@@ -30,9 +31,24 @@ User.belongsToMany(User, {
   through: Follower,
 })
 
+// User-Recipe -- Defining like through table
+Recipe.belongsToMany(User, {
+  foreignKey: 'recipeId',
+  through: Like,
+})
+
+Recipe.hasMany(Like)
+Like.belongsTo(Recipe)
+
+User.belongsToMany(Recipe, {
+  foreignKey: 'userId',
+  through: Like,
+})
+
 module.exports = {
   Recipe,
   User,
   Comment,
   Follower,
+  Like,
 }
