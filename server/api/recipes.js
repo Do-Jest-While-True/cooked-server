@@ -61,7 +61,7 @@ router.get('/:userId', async (req, res, next) => {
   try {
     const recipes = await Recipe.findAll({
       where: { userId: req.params.userId },
-      include: [{ model: Comment, include: [{ model: User }] }],
+      // include: [{ model: Comment, include: [{ model: User }] }],
     })
     res.json(recipes)
   } catch (error) {
