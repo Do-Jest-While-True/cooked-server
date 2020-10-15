@@ -1,11 +1,12 @@
 const router = require('express').Router()
-const { Recipe, Comment, User, Follower } = require('../db/models')
+const { Recipe, Comment, User, Follower, Like } = require('../db/models')
 
 // GET /api/recipes/all (All recipes)
 router.get('/all', async (req, res, next) => {
   try {
     const recipes = await Recipe.findAll({
       include: [{ model: User }],
+      order: [['createdAt', 'DESC']],
     })
     res.json(recipes)
   } catch (error) {
@@ -43,13 +44,56 @@ router.get('/feed', async (req, res, next) => {
 //GET api/recipes/singleRecipe/:recipeId
 router.get('/singlerecipe/:recipeId', async (req, res, next) => {
   try {
-    const recipes = await Recipe.findOne({
+    const recipe = await Recipe.findOne({
       where: {
         id: req.params.recipeId,
       },
-      include: [{ model: Comment }],
+      include: [{ model: Comment }, { model: Like }],
     })
-    res.json(recipes)
+    res.json(recipe)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//PUT api/recipes/like/:recipeId
+router.put('/singlerecipe/:recipeId', async (req, res, next) => {
+  try {
+    const recipe = await Recipe.findOne({
+      where: {
+        id: req.params.recipeId,
+      },
+      include: [{ model: Comment }, { model: Like }],
+    })
+    const like = await Like.create({
+      userId: req.user.id,
+      recipeId: recipe.id,
+    })
+    await recipe.setLikes(like)
+    res.status(201).json(recipe)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//delete api/recipes/singlerecipes/:recipeId
+router.delete('/singlerecipe/:recipeId', async (req, res, next) => {
+  try {
+    const recipe = await Recipe.findOne({
+      where: {
+        id: req.params.recipeId,
+      },
+      include: [{ model: Comment }, { model: Like }],
+    })
+    const like = await Like.findOne({
+      where: {
+        userId: req.user.id,
+        recipeId: recipe.id,
+      },
+    })
+    await like.destroy()
+    // console.log(Object.keys(recipe.__proto__))
+    res.status(201).json(recipe)
   } catch (error) {
     next(error)
   }
