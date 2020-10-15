@@ -40,6 +40,21 @@ router.get('/feed', async (req, res, next) => {
   }
 })
 
+//GET api/recipes/singleRecipe/:recipeId
+router.get('/singlerecipe/:recipeId', async (req, res, next) => {
+  try {
+    const recipes = await Recipe.findOne({
+      where: {
+        id: req.params.recipeId,
+      },
+      include: [{ model: Comment }],
+    })
+    res.json(recipes)
+  } catch (error) {
+    next(error)
+  }
+})
+
 // GET /api/recipes/:userId (All recipes for a single user)
 // Recipes includes comments, comments includes user
 router.get('/:userId', async (req, res, next) => {
@@ -64,6 +79,7 @@ router.post('/', async (req, res, next) => {
       ingredients,
       directions,
       imageUrl,
+      userId: req.user.id,
     })
     res.json(recipe)
   } catch (error) {

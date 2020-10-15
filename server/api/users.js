@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-// GET single user, their followers, and recipes
+// GET single user, their followers and followings
 router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
