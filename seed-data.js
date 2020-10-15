@@ -53,7 +53,7 @@ module.exports = [
       'Remove steak from pan and let rest for 10 minutes',
       'Enjoy!',
     ],
-    userId: 1,
+    userId: 3,
   },
   {
     name: 'Fried Eggs w/ avocado & sriracha',
@@ -86,7 +86,7 @@ module.exports = [
       'Reduce heat and cook to desired doneness',
       'Enjoy!',
     ],
-    userId: 1,
+    userId: 4,
   },
   {
     name: 'Scrambled Eggs w/ bacon',
@@ -103,7 +103,7 @@ module.exports = [
       'Cook to desired doneness and plate up',
       'Enjoy!',
     ],
-    userId: 1,
+    userId: 3,
   },
   {
     name: 'Chicken Tikki Masala o/ basmati rice',
@@ -143,7 +143,7 @@ module.exports = [
       'Roughly chop the cilantro and garnish',
       'Enjoy!',
     ],
-    userId: 1,
+    userId: 3,
   },
   {
     name: 'Steak Fries',
@@ -152,6 +152,7 @@ module.exports = [
     time: '25 minutes',
     ingredients: ['fries'],
     directions: ['fry'],
+    userId: 2,
   },
   {
     name: 'Fried Eggs',
@@ -160,6 +161,7 @@ module.exports = [
     time: '15 minutes',
     ingredients: ['Eggs'],
     directions: ['Fry the eggs'],
+    userId: 2,
   },
   {
     name: 'Chicken Thighs',
@@ -168,6 +170,7 @@ module.exports = [
     time: '25 minutes',
     ingredients: ['Boneless Skinless Chicken Thighs'],
     directions: ['Fry the chicken'],
+    userId: 2,
   },
   {
     name: 'Fermented Giardiniera',
@@ -176,6 +179,7 @@ module.exports = [
     time: '3 days',
     ingredients: ['Veggies', 'Salt', 'Sugar'],
     directions: ['Roughly chop veggies', 'Ferment'],
+    userId: 4,
   },
   {
     name: 'Meatloaf',
@@ -184,6 +188,7 @@ module.exports = [
     time: '55 minutes',
     ingredients: ['Ground Beef', 'Ground Pork'],
     directions: ['Cook at 300F'],
+    userId: 4,
   },
   {
     name: 'Chili',
@@ -192,6 +197,7 @@ module.exports = [
     time: '55 minutes',
     ingredients: ['Beef', 'Tomatoes', 'Hot Peppers', 'Jalapeno'],
     directions: ['Cook'],
+    userId: 2,
   },
   {
     name: 'Garden Stew',
@@ -200,6 +206,7 @@ module.exports = [
     time: '25 minutes',
     ingredients: ['Tomatoes', 'Veggies'],
     directions: ['Stew'],
+    userId: 2,
   },
   {
     name: 'Chicken & Feta o/ Rice',
@@ -208,6 +215,7 @@ module.exports = [
     time: '25 minutes',
     ingredients: ['Chicken', 'Feta', 'Rice'],
     directions: ['Fry the chicken', 'Steam the rice'],
+    userId: 2,
   },
   {
     name: 'Thick Cut Bacon',
@@ -216,6 +224,7 @@ module.exports = [
     time: '25 minutes',
     ingredients: ['Bacon'],
     directions: ['Bake at 400F'],
+    userId: 2,
   },
   {
     name: 'Chicken Wings',
@@ -224,6 +233,7 @@ module.exports = [
     time: '25 minutes',
     ingredients: ['Chicken wings'],
     directions: ['Fry'],
+    userId: 2,
   },
   {
     name: 'Caesar Salad',
@@ -232,6 +242,7 @@ module.exports = [
     time: '25 minutes',
     ingredients: ['Romaine', 'Parm Reg', 'Caesar Dressing'],
     directions: ['Assemble and enjoy'],
+    userId: 3,
   },
   {
     name: 'Beet Quinoa w/ Red Apple',
@@ -240,6 +251,7 @@ module.exports = [
     time: '25 minutes',
     ingredients: ['Quinoa', 'Apples', 'Vinegar', 'Beets'],
     directions: ['Steam quinoa and assemble'],
+    userId: 2,
   },
   {
     name: 'Garden Salad w/ Feta',
@@ -248,6 +260,7 @@ module.exports = [
     time: '25 minutes',
     ingredients: ['Arugala', 'Feta', 'Tomato', 'Onion'],
     directions: ['Assemble and enjoy'],
+    userId: 1,
   },
   {
     name: 'Asparagus',
@@ -256,5 +269,6 @@ module.exports = [
     time: '15 minutes',
     ingredients: ['Asparagus'],
     directions: ['Saute and enjoy'],
+    userId: 4,
   },
 ]
