@@ -8,7 +8,7 @@ const seed = async () => {
     await db.sync({ force: true })
 
     // USERS / FOLLOWERS _____________________
-    const user1 = await User.create({
+    const admin = await User.create({
       firstName: 'Admin',
       lastName: 'Jones',
       username: 'adminjones99',
@@ -16,7 +16,7 @@ const seed = async () => {
       password: 123,
     })
 
-    const user2 = await User.create({
+    const bryan = await User.create({
       firstName: 'Bryan',
       lastName: 'Ryu',
       username: 'bryu2000',
@@ -41,6 +41,7 @@ const seed = async () => {
       await User.create(user)
     })
 
+    // random followings
     for (let i = 1; i < 100; i++) {
       const user1 = await User.findByPk(
         Math.floor(Math.random() * Math.floor(100)) + 1
@@ -51,8 +52,19 @@ const seed = async () => {
       await user2.setFollowing(user1)
     }
 
-    // await user1.setFollower(user2)
-    // await user2.setFollower(user1)
+    // make admin have a lot of followers
+    // for (let i = 1; i < 100; i++) {
+    // 	const user1 = await User.findByPk(Math.floor(Math.random() * Math.floor(100)) + 1);
+    // 	await admin.addFollowing(user1);
+    // }
+
+    // make admin follow many people
+    for (let i = 1; i < 100; i++) {
+      const user3 = await User.findByPk(
+        Math.floor(Math.random() * Math.floor(100)) + 1
+      )
+      await user3.addFollowing(admin)
+    }
 
     // RECIPES / COMMENTS ____________________
     await Promise.all([...stockRecipes.map((recipe) => Recipe.create(recipe))])
@@ -90,10 +102,10 @@ const seed = async () => {
     }
 
     await recipe.addComment(comment1)
-    await comment1.setUser(user2)
+    await comment1.setUser(admin)
 
     // MAGIC METHODS ________________________
-    console.log('user', Object.keys(user1.__proto__))
+    console.log('user', Object.keys(admin.__proto__))
     console.log('recipe', Object.keys(recipe.__proto__))
     console.log('comment', Object.keys(comment1.__proto__))
   } catch (err) {
