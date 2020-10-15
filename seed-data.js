@@ -53,7 +53,7 @@ module.exports = [
       'Remove steak from pan and let rest for 10 minutes',
       'Enjoy!',
     ],
-    userId: 1,
+    userId: 3,
   },
   {
     name: 'Fried Eggs w/ avocado & sriracha',
@@ -86,7 +86,7 @@ module.exports = [
       'Reduce heat and cook to desired doneness',
       'Enjoy!',
     ],
-    userId: 1,
+    userId: 4,
   },
   {
     name: 'Scrambled Eggs w/ bacon',
@@ -103,7 +103,7 @@ module.exports = [
       'Cook to desired doneness and plate up',
       'Enjoy!',
     ],
-    userId: 1,
+    userId: 3,
   },
   {
     name: 'Chicken Tikki Masala o/ basmati rice',
@@ -143,6 +143,132 @@ module.exports = [
       'Roughly chop the cilantro and garnish',
       'Enjoy!',
     ],
+    userId: 3,
+  },
+  {
+    name: 'Steak Fries',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602617183/ziedwiy8jv5hlup6gmob.jpg',
+    time: '25 minutes',
+    ingredients: ['fries'],
+    directions: ['fry'],
+    userId: 2,
+  },
+  {
+    name: 'Fried Eggs',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602617184/ksh8gpklslatrenonesm.jpg',
+    time: '15 minutes',
+    ingredients: ['Eggs'],
+    directions: ['Fry the eggs'],
+    userId: 2,
+  },
+  {
+    name: 'Chicken Thighs',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602617182/gbyl35jl1mfldp56u1c0.jpg',
+    time: '25 minutes',
+    ingredients: ['Boneless Skinless Chicken Thighs'],
+    directions: ['Fry the chicken'],
+    userId: 2,
+  },
+  {
+    name: 'Fermented Giardiniera',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602617184/o8johorlzp7ase55r4j1.jpg',
+    time: '3 days',
+    ingredients: ['Veggies', 'Salt', 'Sugar'],
+    directions: ['Roughly chop veggies', 'Ferment'],
+    userId: 4,
+  },
+  {
+    name: 'Meatloaf',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602714893/m7i0yr6iv9bci7imv4uc.jpg',
+    time: '55 minutes',
+    ingredients: ['Ground Beef', 'Ground Pork'],
+    directions: ['Cook at 300F'],
+    userId: 4,
+  },
+  {
+    name: 'Chili',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602714893/hlnfztkjuvuiz4l5nt1m.jpg',
+    time: '55 minutes',
+    ingredients: ['Beef', 'Tomatoes', 'Hot Peppers', 'Jalapeno'],
+    directions: ['Cook'],
+    userId: 2,
+  },
+  {
+    name: 'Garden Stew',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602714894/pd7sihg4fqposo4yyzjf.jpg',
+    time: '25 minutes',
+    ingredients: ['Tomatoes', 'Veggies'],
+    directions: ['Stew'],
+    userId: 2,
+  },
+  {
+    name: 'Chicken & Feta o/ Rice',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602714893/jh2hzcx6vjysrhhmtwpp.jpg',
+    time: '25 minutes',
+    ingredients: ['Chicken', 'Feta', 'Rice'],
+    directions: ['Fry the chicken', 'Steam the rice'],
+    userId: 2,
+  },
+  {
+    name: 'Thick Cut Bacon',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602714895/ha6ctzbtcrjnnwyxq9pk.jpg',
+    time: '25 minutes',
+    ingredients: ['Bacon'],
+    directions: ['Bake at 400F'],
+    userId: 2,
+  },
+  {
+    name: 'Chicken Wings',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602714894/usasa11hqyhsrjlawwwf.jpg',
+    time: '25 minutes',
+    ingredients: ['Chicken wings'],
+    directions: ['Fry'],
+    userId: 2,
+  },
+  {
+    name: 'Caesar Salad',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602714894/pf1b1u1lkltezvwj0yuk.jpg',
+    time: '25 minutes',
+    ingredients: ['Romaine', 'Parm Reg', 'Caesar Dressing'],
+    directions: ['Assemble and enjoy'],
+    userId: 3,
+  },
+  {
+    name: 'Beet Quinoa w/ Red Apple',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602714895/gsmaokcnmo9bzl3genhp.jpg',
+    time: '25 minutes',
+    ingredients: ['Quinoa', 'Apples', 'Vinegar', 'Beets'],
+    directions: ['Steam quinoa and assemble'],
+    userId: 2,
+  },
+  {
+    name: 'Garden Salad w/ Feta',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602714896/edt2d434mfohf1b481bz.jpg',
+    time: '25 minutes',
+    ingredients: ['Arugala', 'Feta', 'Tomato', 'Onion'],
+    directions: ['Assemble and enjoy'],
     userId: 1,
+  },
+  {
+    name: 'Asparagus',
+    imageUrl:
+      'https://res.cloudinary.com/cooked-images/image/upload/v1602714895/rd16cwaakprzyekchh8j.jpg',
+    time: '15 minutes',
+    ingredients: ['Asparagus'],
+    directions: ['Saute and enjoy'],
+    userId: 4,
   },
 ]
