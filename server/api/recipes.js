@@ -5,7 +5,7 @@ const { Recipe, Comment, User, Follower } = require('../db/models')
 router.get('/all', async (req, res, next) => {
   try {
     const recipes = await Recipe.findAll({
-      include: [{ model: Comment }],
+      include: [{ model: User }],
     })
     res.json(recipes)
   } catch (error) {
