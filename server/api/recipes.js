@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const { Recipe, Comment, User, Follower } = require('../db/models')
 
-// GET /api/recipes (All recipes)
-router.get('/', async (req, res, next) => {
+// GET /api/recipes/all (All recipes)
+router.get('/all', async (req, res, next) => {
   try {
     const recipes = await Recipe.findAll({
       include: [{ model: Comment }],
@@ -13,13 +13,43 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/', async (req, res, next) => {
+//GET api/recipes/feed
+router.get('/feed', async (req, res, next) => {
   const user = req.user
+  const recipeArray = []
   try {
     if (user) {
-      const feedRecipes = await Recipe.findAll({})
-      res.json(feedRecipes)
+      const following = await Follower.findAll({
+        where: { followedById: req.user.id },
+        attributes: ['followingId'],
+      })
+      for (let i = 0; i < following.length; i++) {
+        const feedRecipe = await Recipe.findAll({
+          where: {
+            userId: following[i].followingId,
+          },
+          include: [{ model: User }],
+          order: [['createdAt', 'DESC']],
+        })
+        recipeArray.push(...feedRecipe)
+      }
+      res.json(recipeArray)
     }
+  } catch (error) {
+    next(error)
+  }
+})
+
+//GET api/recipes/singleRecipe/:recipeId
+router.get('/singlerecipe/:recipeId', async (req, res, next) => {
+  try {
+    const recipes = await Recipe.findOne({
+      where: {
+        id: req.params.recipeId,
+      },
+      include: [{ model: Comment }],
+    })
+    res.json(recipes)
   } catch (error) {
     next(error)
   }
@@ -49,6 +79,7 @@ router.post('/', async (req, res, next) => {
       ingredients,
       directions,
       imageUrl,
+      userId: req.user.id,
     })
     res.json(recipe)
   } catch (error) {
