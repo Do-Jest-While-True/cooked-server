@@ -5,7 +5,7 @@ const { Recipe, Comment, User, Follower, Like } = require('../db/models')
 router.get('/all', async (req, res, next) => {
   try {
     const recipes = await Recipe.findAll({
-      include: [{ model: User }],
+      include: [{ model: User }, { model: Like }],
       order: [['createdAt', 'DESC']],
     })
     res.json(recipes)
@@ -29,7 +29,7 @@ router.get('/feed', async (req, res, next) => {
           where: {
             userId: following[i].followingId,
           },
-          include: [{ model: User }],
+          include: [{ model: User }, { model: Like }],
           order: [['createdAt', 'DESC']],
         })
         recipeArray.push(...feedRecipe)
@@ -57,7 +57,7 @@ router.get('/singlerecipe/:recipeId', async (req, res, next) => {
 })
 
 //PUT api/recipes/like/:recipeId
-router.put('/singlerecipe/:recipeId', async (req, res, next) => {
+router.put('/like/:recipeId', async (req, res, next) => {
   try {
     const recipe = await Recipe.findOne({
       where: {
@@ -70,14 +70,14 @@ router.put('/singlerecipe/:recipeId', async (req, res, next) => {
       recipeId: recipe.id,
     })
     await recipe.setLikes(like)
-    res.status(201).json(recipe)
+    res.sendStatus(201)
   } catch (error) {
     next(error)
   }
 })
 
-//delete api/recipes/singlerecipes/:recipeId
-router.delete('/singlerecipe/:recipeId', async (req, res, next) => {
+//delete api/recipes/like/:recipeId
+router.delete('/like/:recipeId', async (req, res, next) => {
   try {
     const recipe = await Recipe.findOne({
       where: {
