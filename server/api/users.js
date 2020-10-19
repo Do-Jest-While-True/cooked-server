@@ -21,9 +21,9 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-//PUT api/users/follow/:followingId
+//POST api/users/follow/:followingId
 // :followingId is the person that you would like to follow, the persons page you should be on
-router.put('/follow/:followingId', async (req, res, next) => {
+router.post('/follow/:followingId', async (req, res, next) => {
   try {
     await Follower.create({
       followedById: req.user.id,
