@@ -21,6 +21,38 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+//PUT api/users/follow/:followingId
+// :followingId is the person that you would like to follow, the persons page you should be on
+router.put('/follow/:followingId', async (req, res, next) => {
+  try {
+    await Follower.create({
+      followedById: req.user.id,
+      followingId: req.params.followingId,
+    })
+    res.sendStatus(201)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//DELETE api/users/follow/:followingId
+// :followedId is the person that you would like to unfollow, the persons page you should be on
+router.delete('/follow/:followingId', async (req, res, next) => {
+  try {
+    const relationship = await Follower.findOne({
+      where: {
+        followedById: req.user.id,
+        followingId: req.params.followingId,
+      },
+    })
+    await relationship.destroy()
+    // console.log(Object.keys(recipe.__proto__))
+    res.sendStatus(204)
+  } catch (error) {
+    next(error)
+  }
+})
+
 // GET single user, their followers and followings
 router.get('/:userId', async (req, res, next) => {
   try {
