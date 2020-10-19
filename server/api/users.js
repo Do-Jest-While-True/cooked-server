@@ -29,7 +29,8 @@ router.post('/follow/:followingId', async (req, res, next) => {
       followedById: req.user.id,
       followingId: req.params.followingId,
     })
-    res.sendStatus(201)
+    res.status(201)
+    res.json()
   } catch (error) {
     next(error)
   }
