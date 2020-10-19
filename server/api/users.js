@@ -40,14 +40,12 @@ router.post('/follow/:followingId', async (req, res, next) => {
 // :followedId is the person that you would like to unfollow, the persons page you should be on
 router.delete('/follow/:followingId', async (req, res, next) => {
   try {
-    const relationship = await Follower.findOne({
+    await Follower.destroy({
       where: {
         followedById: req.user.id,
         followingId: req.params.followingId,
       },
     })
-    await relationship.destroy()
-    // console.log(Object.keys(recipe.__proto__))
     res.sendStatus(204)
   } catch (error) {
     next(error)
