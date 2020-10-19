@@ -9,7 +9,7 @@ router.use('/users', users)
 router.use('/comments', comments)
 
 router.use((req, res, next) => {
-  const err = new Error('API route not found!')
+  const err = new Error('API route not found')
   err.status = 404
   next(err)
 })
