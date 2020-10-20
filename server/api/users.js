@@ -120,3 +120,20 @@ router.put('/profileImage', async (req, res, next) => {
     next(error)
   }
 })
+
+// PUT /api/users/username -- route should be refactored and reused to other field updates
+router.put('/username', async (req, res, next) => {
+  try {
+    await User.update(
+      { username: req.body.newUsername },
+      {
+        where: {
+          id: req.user.id,
+        },
+      }
+    )
+    res.sendStatus(204)
+  } catch (error) {
+    next(error)
+  }
+})
