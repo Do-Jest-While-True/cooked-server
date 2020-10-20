@@ -99,7 +99,7 @@ router.delete('/like/:recipeId', async (req, res, next) => {
   }
 })
 
-//GET api/recipes/likes/:recipeId
+//GET api/recipes/likes/all
 router.get('/like/all', async (req, res, next) => {
   try {
     const recipeLikes = await Like.findAll({
