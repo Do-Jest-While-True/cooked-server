@@ -70,7 +70,7 @@ router.put('/like/:recipeId', async (req, res, next) => {
       recipeId: recipe.id,
     })
     await recipe.setLikes(like)
-    res.sendStatus(201)
+    res.status(201).send(like)
   } catch (error) {
     next(error)
   }
@@ -94,6 +94,20 @@ router.delete('/like/:recipeId', async (req, res, next) => {
     await like.destroy()
     // console.log(Object.keys(recipe.__proto__))
     res.status(201).json(recipe)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//GET api/recipes/likes/:recipeId
+router.get('/like/all', async (req, res, next) => {
+  try {
+    const recipeLikes = await Like.findAll({
+      where: {
+        userId: req.user.id,
+      },
+    })
+    res.json(recipeLikes)
   } catch (error) {
     next(error)
   }
