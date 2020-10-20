@@ -12,8 +12,8 @@ const seed = async () => {
       firstName: 'Admin',
       lastName: 'Jones',
       username: 'adminjones99',
-      email: 'Admin',
-      password: 123,
+      email: 'admin@admin.com',
+      password: 11111111,
     })
 
     const bryan = await User.create({
@@ -31,7 +31,7 @@ const seed = async () => {
         firstName: name,
         lastName: faker.name.lastName(),
         username: faker.internet.userName(),
-        email: faker.internet.email(name),
+        email: faker.internet.email(name).toLowerCase(),
         password: faker.internet.password(),
       }
       users.push(newUser)

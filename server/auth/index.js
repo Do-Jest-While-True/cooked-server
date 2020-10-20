@@ -27,9 +27,9 @@ router.post('/signup', async (req, res, next) => {
         'firstName',
         'lastName',
         'email',
-        'username',
         'profileImageUrl',
         'password',
+        'username',
       ],
     })
     req.login(user, (error) => (error ? next(error) : res.json(user)))
