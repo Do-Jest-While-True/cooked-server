@@ -70,7 +70,7 @@ router.put('/like/:recipeId', async (req, res, next) => {
       recipeId: recipe.id,
     })
     await recipe.setLikes(like)
-    res.status(201).send(like)
+    res.status(201).json(like)
   } catch (error) {
     next(error)
   }
