@@ -103,3 +103,20 @@ router.get('/:userId/:recipeId', async (req, res, next) => {
     next(error)
   }
 })
+
+// PUT /api/users/profileImage
+router.put('/profileImage', async (req, res, next) => {
+  try {
+    await User.update(
+      { profileImageUrl: req.body.profileImageUrl },
+      {
+        where: {
+          id: req.user.id,
+        },
+      }
+    )
+    res.sendStatus(204)
+  } catch (error) {
+    next(error)
+  }
+})
