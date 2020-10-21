@@ -1,5 +1,12 @@
 const db = require('./server/db')
-const { Recipe, User, Comment, Follower } = require('./server/db/models')
+const {
+  Recipe,
+  User,
+  Comment,
+  Follower,
+  Message,
+  Thread,
+} = require('./server/db/models')
 const stockRecipes = require('./seed-data.js')
 const faker = require('faker')
 
@@ -104,10 +111,41 @@ const seed = async () => {
     await recipe.addComment(comment1)
     await comment1.setUser(admin)
 
+    // MESSAGES/THREADS ______________________
+
+    const thread1 = await Thread.create({
+      userA: 1,
+      userB: 2,
+    })
+
+    const message1 = await Message.create({
+      body: 'This is a message!',
+      sentBy: 1,
+      sentTo: 2,
+    })
+
+    const message2 = await Message.create({
+      body: 'this is message 2!!',
+      sentBy: 2,
+      sentTo: 1,
+    })
+
+    const message3 = await Message.create({
+      body: 'message 3!!!',
+      sentBy: 1,
+      sentTo: 2,
+    })
+
+    await message1.setThread(thread1)
+    await message2.setThread(thread1)
+    await message3.setThread(thread1)
+
     // MAGIC METHODS ________________________
     console.log('user', Object.keys(admin.__proto__))
     console.log('recipe', Object.keys(recipe.__proto__))
     console.log('comment', Object.keys(comment1.__proto__))
+    console.log('message', Object.keys(message1.__proto__))
+    console.log('thread', Object.keys(thread1.__proto__))
   } catch (err) {
     console.log(err)
   }
