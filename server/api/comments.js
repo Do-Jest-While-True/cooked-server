@@ -30,10 +30,14 @@ router.get('/', async (req, res, next) => {
 //POST api/comments/:recipeId
 router.post('/:recipeId', async (req, res, next) => {
   try {
-    const comment = await Comment.create({
+    const newComment = await Comment.create({
       userId: req.user.id,
       recipeId: req.params.recipeId,
       body: req.body.comment,
+    })
+    const comment = await Comment.findOne({
+      where: { id: newComment.id },
+      include: [{ model: User, attributes: ['username', 'profileImageUrl'] }],
     })
     res.json(comment)
   } catch (error) {
