@@ -118,6 +118,15 @@ const seed = async () => {
       userB: 2,
     })
 
+    const thread2 = await Thread.create({
+      userA: 3,
+      userB: 1,
+    })
+
+    const thread3 = await Thread.create({
+      userA: 1,
+      userB: 4,
+    })
     const message1 = await Message.create({
       body: 'This is a message!',
       sentBy: 1,
@@ -126,19 +135,19 @@ const seed = async () => {
 
     const message2 = await Message.create({
       body: 'this is message 2!!',
-      sentBy: 2,
+      sentBy: 3,
       sentTo: 1,
     })
 
     const message3 = await Message.create({
       body: 'message 3!!!',
       sentBy: 1,
-      sentTo: 2,
+      sentTo: 4,
     })
 
     await message1.setThread(thread1)
-    await message2.setThread(thread1)
-    await message3.setThread(thread1)
+    await message2.setThread(thread2)
+    await message3.setThread(thread3)
 
     // MAGIC METHODS ________________________
     console.log('user', Object.keys(admin.__proto__))
