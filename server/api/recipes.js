@@ -48,7 +48,18 @@ router.get('/singlerecipe/:recipeId', async (req, res, next) => {
       where: {
         id: req.params.recipeId,
       },
-      include: [{ model: Comment }, { model: Like }],
+      include: [
+        {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ['username', 'profileImageUrl'],
+            },
+          ],
+        },
+        { model: Like },
+      ],
     })
     res.json(recipe)
   } catch (error) {
@@ -56,8 +67,8 @@ router.get('/singlerecipe/:recipeId', async (req, res, next) => {
   }
 })
 
-//PUT api/recipes/like/:recipeId
-router.put('/like/:recipeId', async (req, res, next) => {
+//POST api/recipes/like/:recipeId
+router.post('/like/:recipeId', async (req, res, next) => {
   try {
     const recipe = await Recipe.findOne({
       where: {
