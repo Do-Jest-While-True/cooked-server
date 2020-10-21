@@ -4,6 +4,8 @@ const User = require('./user')
 const Comment = require('./comment')
 const Follower = require('./follower')
 const Like = require('./like')
+const Thread = require('./thread')
+const Message = require('./messages')
 
 // Model Associations
 
@@ -45,10 +47,16 @@ User.belongsToMany(Recipe, {
   through: Like,
 })
 
+// Thread-Message 1:M
+Thread.hasMany(Message)
+Message.belongsTo(Thread)
+
 module.exports = {
   Recipe,
   User,
   Comment,
   Follower,
   Like,
+  Thread,
+  Message,
 }
