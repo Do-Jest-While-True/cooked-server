@@ -34,6 +34,7 @@ router.post('/signup', async (req, res, next) => {
     })
     req.login(user, (error) => (error ? next(error) : res.json(user)))
   } catch (error) {
+    // if (error.errors[0].message) res.json('Email already registered!');
     next(error)
   }
 })

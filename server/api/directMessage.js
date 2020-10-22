@@ -4,7 +4,7 @@ const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 module.exports = router
 
-// GET ALL /api/directMessages/threads
+// GET ALL /api/directMessage/threads
 // This is all threads for ME. to display on all users messages page
 router.get('/threads', async (req, res, next) => {
   try {
@@ -44,12 +44,59 @@ router.get('/threads', async (req, res, next) => {
       thread.dataValues.user = allUsersFromMyThreads[i]
       return thread
     })
-    console.log(
-      'allThreads With user from get api route ======',
-      allThreadsWithUserObject
-    )
     res.json(allThreadsWithUserObject)
   } catch (error) {
     console.error(error)
+  }
+})
+
+// GET /api/directMessage/singleThread
+router.get('/singleThread/:threadId', async (req, res, next) => {
+  try {
+    const thread = await Message.findAll({
+      where: {
+        threadId: req.params.threadId,
+      },
+    })
+    res.json(thread)
+  } catch (error) {
+    next(error)
+  }
+})
+
+// POST /api/directMessage/newThread
+router.post('/newThread', async (req, res, next) => {
+  try {
+    const { myId, username } = req.body
+    const otherUser = await User.findOne({
+      where: {
+        username,
+      },
+    })
+    const newThread = await Thread.create({
+      userA: myId,
+      userB: otherUser.id,
+    })
+    newThread.dataValues.user = otherUser
+    newThread.dataValues.messages = []
+    res.json(newThread)
+  } catch (error) {
+    next(error)
+  }
+})
+
+// POST /api/directMessage/newMessage
+router.post('/newMessage', async (req, res, next) => {
+  try {
+    const { body, sentBy, sentTo, threadId } = req.body
+    const newMessage = await Message.create({
+      body,
+      sentBy,
+      sentTo,
+      threadId,
+    })
+    res.json(newMessage)
+  } catch (error) {
+    next(error)
   }
 })

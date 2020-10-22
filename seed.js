@@ -109,7 +109,7 @@ const seed = async () => {
     await recipe.addComment(comment1)
     await comment1.setUser(admin)
 
-    // MESSAGES/THREADS ______________________
+    // MESSAGES / THREADS ______________________
 
     const thread1 = await Thread.create({
       userA: 1,
@@ -127,8 +127,8 @@ const seed = async () => {
     })
     const message1 = await Message.create({
       body: 'Loved your chicken dish I made it last night!',
-      sentBy: 1,
-      sentTo: 2,
+      sentBy: 2,
+      sentTo: 1,
     })
 
     const message2 = await Message.create({
