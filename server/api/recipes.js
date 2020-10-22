@@ -48,20 +48,24 @@ router.get('/singlerecipe/:recipeId', async (req, res, next) => {
       where: {
         id: req.params.recipeId,
       },
+    })
+    const comments = await Comment.findAll({
+      where: {
+        recipeId: req.params.recipeId,
+      },
       include: [
         {
-          model: Comment,
-          include: [
-            {
-              model: User,
-              attributes: ['username', 'profileImageUrl'],
-            },
-          ],
+          model: User,
+          attributes: ['username', 'profileImageUrl'],
         },
-        { model: Like },
       ],
+      order: [['createdAt', 'ASC']],
     })
-    res.json(recipe)
+    const singleRecipe = {
+      recipe,
+      comments,
+    }
+    res.json(singleRecipe)
   } catch (error) {
     next(error)
   }
