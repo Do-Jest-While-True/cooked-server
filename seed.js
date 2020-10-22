@@ -1,12 +1,5 @@
 const db = require('./server/db')
-const {
-  Recipe,
-  User,
-  Comment,
-  Follower,
-  Message,
-  Thread,
-} = require('./server/db/models')
+const { Recipe, User, Comment, Message, Thread } = require('./server/db/models')
 const stockRecipes = require('./seed-data.js')
 const faker = require('faker')
 
@@ -21,6 +14,8 @@ const seed = async () => {
       username: 'adminjones99',
       email: 'admin@admin.com',
       password: 11111111,
+      profileImageUrl:
+        'https://shortyawards.imgix.net/entries/11th/d88fd845-6d99-4bf6-a94c-640a5fd7e416.jpeg?auto=format&fit=crop&h=400&q=65&w=400&s=760bad31d7445f0a066c99d22b9c9051',
     })
 
     const bryan = await User.create({
@@ -29,6 +24,8 @@ const seed = async () => {
       username: 'bryu2000',
       email: 'bryanryu1@gmail.com',
       password: 456,
+      profileImageUrl:
+        'https://assets.bonappetit.com/photos/5d7bdb577106210008b62851/5:7/w_800,h_1120,c_limit/Andy-10-Cooking-Rules-portrait.jpg',
     })
 
     let users = []
@@ -40,6 +37,7 @@ const seed = async () => {
         username: faker.internet.userName(),
         email: faker.internet.email(name).toLowerCase(),
         password: faker.internet.password(),
+        profileImageUrl: faker.image.avatar(),
       }
       users.push(newUser)
     }
@@ -128,26 +126,40 @@ const seed = async () => {
       userB: 4,
     })
     const message1 = await Message.create({
-      body: 'This is a message!',
+      body: 'Loved your chicken dish I made it last night!',
       sentBy: 1,
       sentTo: 2,
     })
 
     const message2 = await Message.create({
-      body: 'this is message 2!!',
+      body: 'Those eggs you last last night looked great!',
       sentBy: 3,
       sentTo: 1,
     })
 
     const message3 = await Message.create({
-      body: 'message 3!!!',
+      body: 'Keep the recipes coming!!!',
       sentBy: 1,
       sentTo: 4,
+    })
+
+    const message4 = await Message.create({
+      body: 'Thanks I appreciate it!',
+      sentBy: 1,
+      sentTo: 2,
+    })
+
+    const message5 = await Message.create({
+      body: 'No problem, talk later.',
+      sentBy: 2,
+      sentTo: 1,
     })
 
     await message1.setThread(thread1)
     await message2.setThread(thread2)
     await message3.setThread(thread3)
+    await message4.setThread(thread1)
+    await message5.setThread(thread1)
 
     // MAGIC METHODS ________________________
     console.log('user', Object.keys(admin.__proto__))
