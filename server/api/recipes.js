@@ -33,6 +33,7 @@ router.get('/feed', async (req, res, next) => {
           order: [['createdAt', 'DESC']],
         })
         recipeArray.push(...feedRecipe)
+        recipeArray.sort((a, b) => b.createdAt - a.createdAt)
       }
       res.json(recipeArray)
     }

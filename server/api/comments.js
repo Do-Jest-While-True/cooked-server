@@ -37,7 +37,9 @@ router.post('/:recipeId', async (req, res, next) => {
     })
     const comment = await Comment.findOne({
       where: { id: newComment.id },
-      include: [{ model: User, attributes: ['username', 'profileImageUrl'] }],
+      include: [
+        { model: User, attributes: ['id', 'username', 'profileImageUrl'] },
+      ],
     })
     res.json(comment)
   } catch (error) {
