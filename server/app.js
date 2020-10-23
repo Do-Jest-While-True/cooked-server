@@ -1,6 +1,6 @@
 const express = require('express')
 const passport = require('passport')
-const compression = require('compression')
+// const compression = require('compression')
 const session = require('express-session')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
@@ -27,7 +27,7 @@ app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
-app.use(compression())
+// app.use(compression())
 
 app.use(
   session({
