@@ -134,6 +134,8 @@ router.put('/username', async (req, res, next) => {
     )
     res.sendStatus(204)
   } catch (error) {
+    // console.log(error.errors[0].message);
+    // if (error.errors[0].message) res.json('Username already taken!');
     next(error)
   }
 })
