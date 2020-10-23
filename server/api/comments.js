@@ -4,28 +4,28 @@ module.exports = router
 
 // GET /api/comments
 // TODO: Is this route necessary?
-router.get('/', async (req, res, next) => {
-  try {
-    const comments = await Comment.findAll({
-      where: { userId: req.user.id },
-      include: [
-        {
-          model: User,
-          attributes: [
-            'id',
-            'firstName',
-            'lastName',
-            'email',
-            'profileImageUrl',
-          ],
-        },
-      ],
-    })
-    res.json(comments)
-  } catch (error) {
-    next(error)
-  }
-})
+// router.get('/', async (req, res, next) => {
+//   try {
+//     const comments = await Comment.findAll({
+//       where: { userId: req.user.id },
+//       include: [
+//         {
+//           model: User,
+//           attributes: [
+//             'id',
+//             'firstName',
+//             'lastName',
+//             'email',
+//             'profileImageUrl',
+//           ],
+//         },
+//       ],
+//     })
+//     res.json(comments)
+//   } catch (error) {
+//     next(error)
+//   }
+// })
 
 //POST api/comments/:recipeId
 router.post('/:recipeId', async (req, res, next) => {
@@ -40,6 +40,32 @@ router.post('/:recipeId', async (req, res, next) => {
       include: [{ model: User, attributes: ['username', 'profileImageUrl'] }],
     })
     res.json(comment)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.put('/:commentId', async (req, res, next) => {
+  try {
+    const comment = await Comment.update(
+      { body: req.body.updatedComment },
+      {
+        where: {
+          id: req.params.commentId,
+          userId: req.user.id,
+        },
+        returning: true,
+        plain: true,
+      }
+    )
+    const updatedComment = await Comment.findOne({
+      where: {
+        id: req.params.commentId,
+        userId: req.user.id,
+      },
+      include: [{ model: User, attributes: ['username', 'profileImageUrl'] }],
+    })
+    res.json(updatedComment)
   } catch (error) {
     next(error)
   }
