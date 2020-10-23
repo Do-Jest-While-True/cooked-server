@@ -132,7 +132,7 @@ const seed = async () => {
     })
 
     const message2 = await Message.create({
-      body: 'Those eggs you last last night looked great!',
+      body: 'Those eggs you made last night looked great!',
       sentBy: 3,
       sentTo: 1,
     })
