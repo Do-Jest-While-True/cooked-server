@@ -100,3 +100,15 @@ router.post('/newMessage', async (req, res, next) => {
     next(error)
   }
 })
+
+// DELETE /api/directMessage/deleteThread/:threadId
+router.delete('/deleteThread/:threadId', async (req, res, next) => {
+  try {
+    await Thread.destroy({
+      where: { id: req.params.threadId },
+    })
+    res.sendStatus(204)
+  } catch (error) {
+    next(error)
+  }
+})
