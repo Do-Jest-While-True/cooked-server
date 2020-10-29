@@ -6,7 +6,7 @@ Cook'd is a social media mobile application revolving around recipes. Cook'd all
 
 ### Expo Link: <https://expo.io/@cooked-capstone/projects/cooked>
 
-![Expo QR Code](./assets/readme/expo.png)
+![Expo QR Code](./assets/expo.png)
 
 ## Tech Stack
 
